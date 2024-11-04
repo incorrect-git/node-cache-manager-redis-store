@@ -474,7 +474,7 @@ var buildRedisStoreWithConfig = function buildRedisStoreWithConfig(redisCache, c
               }
               throw new Error("\"".concat(value, "\" is not a cacheable value"));
             case 2:
-              ttl = options !== null && options !== void 0 && options.ttl || (options === null || options === void 0 ? void 0 : options.ttl) === 0 ? options.ttl : config.ttl;
+              ttl = options !== null && options !== void 0 && options || (options === null || options === void 0 ? void 0 : options) === 0 ? options : config.ttl;
               if (!ttl) {
                 _context.next = 7;
                 break;
@@ -554,7 +554,7 @@ var buildRedisStoreWithConfig = function buildRedisStoreWithConfig(redisCache, c
               if (isObject(args.at(-1))) {
                 options = args.pop();
               }
-              ttl = options.ttl || options.ttl === 0 ? options.ttl : config.ttl; // Zips even and odd array items into tuples
+              ttl = options || options === 0 ? options : config.ttl; // Zips even and odd array items into tuples
               items = args.map(function (key, index) {
                 if (index % 2 !== 0) return null;
                 var value = args[index + 1];
